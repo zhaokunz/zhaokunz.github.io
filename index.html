@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style-type: none;}
+        body,html{background-color: purple;height:100vh; width:100vw; overflow: hidden;}
+        .item{height:26px; width:14px;background-color: teal;transform: rotate(-45deg);
+           border-radius: 8px 8px 0 0; position: absolute;}
+        .item span{position:absolute; top:6px; left:6px; content:'';height:26px; width:14px;
+            background-color: teal; transform:rotate(90deg);border-radius: 8px 8px 0 0;}
+    </style>
+</head>
+<body>
+    <script>
+        document.onmousemove=function(e){
+            let evt=e || event;
+            let movex=evt.clientX;
+            let movey=evt.clientY;
+            let oDiv=document.createElement('div');
+            let oSpan=document.createElement('span');
+            oDiv.className='item';
+            oSpan.style.backgroundColor=oDiv.style.backgroundColor=bgrandom();
+            oDiv.style.left=movex-7+'px';
+            oDiv.style.top=movey-13+'px';
+            oDiv.appendChild(oSpan);
+            document.body.appendChild(oDiv);
+            setTimeout(() => {
+                oDiv.style.transition=`${Math.random()*1+3}s`;
+                oDiv.style.transform=`translateY(${(Math.random()*600-200)}px) 
+                    translateX(${(Math.random()*1400-800)}px)
+                    translateZ(${(Math.random()*1400-800)}px)`; 
+                    oDiv.style.opacity=0;
+                setTimeout(() => {
+                    oDiv.remove();
+                },3000);
+            });
+        }
+        let bgrandom=()=>{
+            return `rgb(${parseInt(Math.random()*255)},${parseInt(Math.random()*255)},${parseInt(Math.random()*255)})`;
+        }
+    </script>
+</body>
+</html>
