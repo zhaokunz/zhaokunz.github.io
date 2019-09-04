@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <p v-for="(item, index) in arr">
+            {{item | lee}}
+        </p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                arr:[1,2,3,4]
+            },
+            methods: {},
+            filters:{
+                lee(a){
+                    if(a>2){
+                        return a;
+                    }
+                    console.log(a)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

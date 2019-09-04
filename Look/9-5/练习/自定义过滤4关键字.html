@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="val">
+        <p v-for="(item, index) in arr">
+            {{item | lee(val)}}
+        </p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                val:'输字',
+                arr:['测试文字1','测试文字2','测试文字3','测试文字4']
+            },
+            methods: {},
+            filters:{
+                lee(a,b){
+                    if(b){
+                        var arr=a.split(b);
+                        var str=arr.join('<span style="color:red"> +b+ </span>')
+                        return str
+                    }
+                    else{
+                        return a;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

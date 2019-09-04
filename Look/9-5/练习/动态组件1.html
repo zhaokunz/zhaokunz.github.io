@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span @click="type=item" v-for="(item, index) in arr">
+            {{item}}
+        </span>
+        <keep-alive>
+            <component :is="type"></component>
+        </keep-alive>
+    </div>
+    <template id="no1">
+        <div @click="num++">
+            我是no1,我点击了{{num}}次
+        </div>
+    </template>
+    <template id="no2">
+        <div @click="num++">
+            我是no2,我点击了{{num}}次
+        </div>
+    </template>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('no1',{
+            template:'#no1',
+            data(){
+                return{
+                    num:0
+                }
+            },
+            mounted() {
+                console.log('我重新渲染了')
+            },
+            activated() {
+                console.log('keep-alive组件激活时调用')
+            },
+            deactivated() {
+                console.log('keep-alive组件停用时调用')
+            },
+        })
+        Vue.component('no2',{
+            template:'#no2',
+            data(){
+                return{
+                    num:0
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                arr:['no1','no2'],
+                type:'no1',
+            },
+            methods: {},
+            
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+        [v-cloak]{display: none;}
+        .nav{background-color: rgba(0,0,0,.6); position: absolute; width:100%; top:0; left:0;}
+        .nav p{position:relative; border-bottom:1px #ccc solid; line-height:30px; color:#fff; text-align:center;}
+        .nav p span{position:absolute; right:14px; top:0;}
+        .nav1-enter{
+            top:40px;
+            opacity: 0;
+        }
+        .nav1-enter-active{
+            transition:all .6s;
+        }
+        .nav1-to{
+            top:0;
+            opacity: 1;
+        }
+        .nav1-leave{
+            top:0;
+            opacity: 1;
+        }
+        .nav1-leave-active{
+            transition:all .4s;
+        }
+        .nav1-leave-to{
+            top:40px;
+            opacity: 0;
+        }
+
+        .nav2-enter{
+            left:-100%;
+        }
+        .nav2-enter-active{
+            transition:all .6s;
+        }
+        .nav2-to{
+            left:0;
+        }
+        .nav2-leave{
+            left:0;
+        }
+        .nav2-leave-active{
+            transition:all .6s;
+        }
+        .nav2-leave-to{
+            left:-100%;
+        }
+
+        .nav3-enter{
+            top:30px;
+            opacity: 0;
+        }
+        .nav3-enter-active{
+            transition:all .3s;
+        }
+        .nav3-enter-to{
+            top:0;
+            opacity: 1;
+        }
+        .nav3-leave{
+            top:0;
+            opacity: 1;
+        }
+        .nav3-leave-active{
+            transition:all .3s;
+        }
+        .nav3-leave-to{
+            top:30px;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" v-cloak>
+        <div @click="navbtn1" style="text-align:center; line-height:50px; background-color: palegoldenrod;">导航</div>
+        <div style="position:relative;">
+            <transition :name="trnav">
+                <div class="nav" v-show="navtype1" style="z-index:3;">
+                    <p v-for="(item, index) in navarr">
+                        {{item.nav}}
+                        <span @click="navbtn2(item.arr)" v-if="item.arr.length">></span>
+                    </p>
+                </div>
+            </transition>
+            <transition :name="trnav2">
+                <div class="nav" v-show="navtype2" style="z-index:2;">
+                    <p @click="navbtn3">返回上一级</p>
+                    <p v-for="(item, index) in navarr2">
+                        {{item}}
+                    </p>
+                </div>
+            </transition>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                navarr:[
+                    {nav:'首页',arr:[]},
+                    {nav:'no1',arr:['no1','no2']},
+                    {nav:'no2',arr:[]},
+                    {nav:'no3',arr:['no1c','no2c']},
+                    {nav:'no4',arr:['a','b','c']}
+                ],
+                navtype1:false,
+                navtype2:false,
+                trnav:'nav1',
+                trnav2:'nav3',
+                navarr2:'',
+            },
+            methods: {
+                navbtn1(){
+                    this.trnav='nav1';
+                    this.trnav2='';
+                    setTimeout(() => {
+                        this.navtype2=false;
+                        this.navtype1= !this.navtype1;
+                    },1);
+                    
+                },
+                navbtn2(a){
+                    this.navarr2=a;
+                    this.trnav='nav2';
+                    this.trnav2='nav3';
+                    setTimeout(() => {
+                        this.navtype1=false;
+                    },1);
+                    setTimeout(() => {
+                        this.navtype2=true;
+                    },200);
+                },
+                navbtn3(){
+                    this.trnav='nav2';
+                    setTimeout(() => {
+                        this.navtype1=true;
+                    },200);
+                    this.navtype2=false;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

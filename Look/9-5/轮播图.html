@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+        #prev, #next{position: absolute; top:50%;height:80px;width:40px;margin-top:-40px;
+            background-color: rgba(0,0,0,.5);overflow: hidden;}
+        #prev{left:0;}
+        #next{right:0;}
+        #next:after, #prev:after{content:'';height:24px;width:24px;border-top:2px #fff solid;
+            border-left:2px #fff solid;display: block;}
+        #prev:after{transform: rotate(-45deg);margin:28px 0 0 14px;}
+        #next:after{transform: rotate(135deg);margin:28px 0 0 0;}
+        .lee-enter{
+            left:-500px !important;
+            opacity:0;
+        }
+        .lee-leave-active, .lee-enter-active{
+            transition: .5s all linear;
+        }
+        .lee-leave-to{
+            left:500px !important;
+            opacity:0;
+        }
+
+        .lee2-enter{
+            left:500px !important;
+            opacity:0;
+        }
+        .lee2-leave-active, .lee2-enter-active{
+            transition: .5s all linear;
+        }
+        .lee2-leave-to{
+            left:-500px !important;
+            opacity:0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <no1 :arrlist="arr"></no1>
+        <no1 :arrlist="arr2"></no1>
+    </div>
+    <template id="no1">
+        <div>
+            <div style="position:relative;width:500px;height:300px;overflow: hidden;">
+                <transition :name="type" v-for="(item, $index) in arr" :key="$index">
+                    <div style="position:absolute;left:0;top:0;width:500px;height:300px;"
+                        v-show="index==$index">
+                        <img style="width:100%;height:100%;" :src="item" alt="">
+                    </div>
+                </transition>
+                <span id="prev" @click="less"></span>
+                <span id="next" @click="plus"></span>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('no1',{
+            template:'#no1',
+            props:['arrlist'],
+            data(){
+                return{
+                    arr:this.arrlist,
+                    index:0,
+                    type:'lee',
+                }
+            },
+            methods:{
+                plus(){
+                    this.type='lee';
+                    this.index++;
+                    if(this.index>=4){
+                        this.index=0;
+                    }
+                },
+                less(){
+                    this.type='lee2';
+                    this.index--;
+                    if(this.index<=-1){
+                        this.index=3;
+                    }
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                arr:[
+                    'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2471845590,913308006&fm=26&gp=0.jpg',
+                    'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2656628652,2746692771&fm=26&gp=0.jpg',
+                    'http://img0.imgtn.bdimg.com/it/u=2115448595,3265608281&fm=26&gp=0.jpg',
+                    'http://img1.imgtn.bdimg.com/it/u=3818249532,1558495751&fm=26&gp=0.jpg'
+                ],
+                arr2:[
+                    'http://img5.imgtn.bdimg.com/it/u=3140522669,3854181466&fm=26&gp=0.jpg',
+                    'http://img2.imgtn.bdimg.com/it/u=2156348875,3421317035&fm=26&gp=0.jpg',
+                    'http://img0.imgtn.bdimg.com/it/u=2638977175,1485789245&fm=26&gp=0.jpg',
+                    'http://img3.imgtn.bdimg.com/it/u=623985774,1948203537&fm=26&gp=0.jpg'
+                ]
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h1>arr问题</h1>
+        <button @click="btn">变数据</button>
+        <button @click="lengths">变length</button>
+        <p v-for="(item, index) in arr">
+            {{item}}
+        </p>
+        <h1>json问题</h1>
+        <button @click="cre">创建key</button>
+        <p v-for="(item, index) in json">
+            {{item}}
+        </p>
+
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                arr:[1,2,3,4,5,6,7,8],
+                json:{
+                    a:10,
+                    b:20,
+                }
+            },
+            methods: {
+                btn(){
+                    // this.arr[0]=20;  //错误写法
+                    // this.arr.splice(0,1,30);  //js方法
+                    this.$set(this.arr,0,30)  //vue方法
+                },
+                lengths(){
+                    // this.arr.slice(5);//错误写法
+                    // this.arr.splice(2);  //js方法
+                },
+                cre(){
+                    // this.json.c=30; //错误写法
+                    this.$set(this.json,'c',33);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

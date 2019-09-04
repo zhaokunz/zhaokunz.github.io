@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box" @click="num++">
+        你点击了{{num}}次
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                num:0
+            },
+            methods: {},
+            beforeCreate() {
+                console.log('创建前',this.num)
+            },
+            created() {
+                console.log('创建后',this.num)
+            },
+            beforeMount() {
+                console.log('渲染前',this.num)
+            },
+            mounted() {
+                console.log('渲染后',this.num)
+            },
+            beforeUpdate() {
+                console.log('更新前',this.num)
+            },
+            updated() {
+                console.log('更新后',this.num)
+            },
+            beforeDestroy() {
+                console.log('销毁前',this.num)
+                this.num=10
+                // console.log('销毁前',this.num)
+            },
+            destroyed() {
+                console.log('销毁后',this.num)
+            },
+        });
+        vm.$destroy();
+    </script>
+</body>
+
+</html>

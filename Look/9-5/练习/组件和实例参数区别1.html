@@ -1,0 +1,66 @@
+<!-- 组件和实例参数的区别
+组件data是函数且需要return返回
+组件的挂载点是template
+实例参数的data不是函数 
+实例参数的挂载点是el
+
+组件
+data是函数且需要return返回
+挂载点是template
+实例参数
+data不是函数
+挂载点是el
+
+组件
+data是函数且需要return返回
+挂载点是template
+实例参数
+fata不是函数
+挂载点是el -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        {{msg}}<br/>  
+        <lee></lee>
+    </div>
+    <template id="lee">
+        <div>
+            {{msg}}
+        </div>
+    </template>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.component('lee',{
+            template:'#lee',
+            data(){
+                return{
+                    msg:'组件的data需要return返回 是函数'
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                msg:'实例参数的data不需要return返回 不是函数'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

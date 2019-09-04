@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" v-model="value">
+        <p v-for="(item, index) in arr">
+            {{item | lee(value)}}
+        </p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.filter('lee',(a,b,c)=>{
+            if(b){
+                var arr=a.split(b);
+                let str=arr.join('<span style="color:red">' +b+'</span>')
+                return str
+            }
+            else{
+                return a;
+            }
+            
+        })
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                value:'输字吧',
+                arr:['大富士康','上课发放','乌尔禾','快速导航分开']
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
