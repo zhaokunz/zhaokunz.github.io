@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div style="height:60px; border-bottom:1px #ccc solid;">
+            <router-link :to="{name:'no1'}">导航</router-link>
+            <router-link to="/no2/1/no2_1/1">列表</router-link>
+        </div>
+        <div style="min-height:400px;">
+            <router-view></router-view>
+        </div>
+        <div style="height:100px; border-top:1px #ccc solid;">尾部</div>
+    </div>
+    <template id="no1">
+        <div>
+            导航
+        </div>
+    </template>
+    <template id="no2">
+        <div>
+            <div style="overflow:hidden;">
+                <div style="float:left; min-height:150px; border-right:1px #ccc solid;">
+                    <div>
+                        <p v-for="(item, index) in 10">
+                            <router-link :to="`/no2/${item}/no2_1/${item}`">
+                                我是二级动态路由{{item}}
+                            </router-link>
+                        </p>
+                    </div>
+                </div>
+                <div style="float:left;">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="no2_1">
+        <div>
+            {{$route.params}}
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+        const routes=[
+            {
+                path:'/no1',
+                component:{
+                    template:'#no1',
+                },
+                name:'no1'
+            },
+            {
+                path:'/no2/:id',
+                component:{
+                    template:'#no2',
+                },
+                name:'no2/:id',
+                children:[
+                    {
+                        path:'no2_1/:ccc',
+                        component:{
+                            template:'#no2_1',
+                            mounted() {
+                                console.log(this.$route)
+                            },
+                            watch:{
+                                '$route'(a){
+                                    console.log(a)
+                                }
+                            }
+                        },
+                        name:'no2_1/:ccc',
+                    }
+                ]
+            },
+            {
+                path:'/',
+                redirect:'/no1'
+            }
+        ]
+        const router = new VueRouter({
+            routes
+        })
+        var vm = new Vue({
+            router,
+            el: '#box',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
