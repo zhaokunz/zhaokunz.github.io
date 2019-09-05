@@ -29,7 +29,7 @@ Vue.component('lee',{
                     },
                     {
                         name:'9-5webpack配置',
-                        url:'Look/9-5/app/dist/index.html',
+                        url:'Look/9-5/app/dist',
                     },
                 ]
             ]
