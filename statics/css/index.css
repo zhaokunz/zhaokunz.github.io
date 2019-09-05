@@ -6,6 +6,34 @@
 	font-weight: 400;
 	font-style: normal
 }
+#looks {
+	position: absolute;
+	top: 400px;
+	z-index: 200;
+	left: 43%;
+	padding: 14px 20px;
+	color: #fff;
+	background-color: rgba(0, 0, 0, .5);
+	outline: none;
+}
+#title div{
+	height:80vh !important;
+}
+#title div>div{
+	color:#000;
+}
+#title div i{
+	font-size:50px;
+	color:#000;
+	outline: none;
+}
+#text{
+	margin-top:-32px;
+	padding:10px 20px;
+}
+#text table tr:nth-child(2n-1){
+	background-color: #f0f0f0;
+}
 
 .hermit {
 	overflow: hidden;

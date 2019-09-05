@@ -1,35 +1,89 @@
 <!doctype html>
 <html lang="zh">
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>我的个人博客</title>
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
-		<style>
-			#looks{
-				position: absolute; 
-				top:400px;
-				z-index: 200;
-				left:43%;
-				padding:14px 20px;
-				color:#fff;
-				background-color: rgba(0,0,0,.5);
-			}
-		</style>
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>我的个人博客</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="statics/css/index.css" media="all" />
+	<!-- 引入样式 -->
+	<script src="statics/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="statics/js/vue.js"></script>
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<!-- <script>
+		window.onload=function(){
+			Vue.component('lee',{
+				template:`
+					<div>{{a}}</div>
+				`,
+				data:{
+					a:'hah'
+				}
+			})
+			new Vue({
+				el: '#box',
+				data:{
+					drawer: false,
+					direction: 'ttb',
+					arr:[
+						[
+							{
+								name:'9-4轮播图',
+								url:'Look/9-4/轮播图.html',
+							},
+							{
+								name:'9-4三级导航',
+								url:'Look/9-4/三级导航.html',
+							},
+							// {
+							// 	name:'9-5webpack配置',
+							// 	url:'Look/9-5/三级导航.html',
+							// }
+						]
+					]
+				},
+				methods: {
+					add() {
+						this.drawer = true;
+					},
+					handleClose(done) {
+						console.log(3)
+						this.$confirm('确认关闭？')
+							.then(_ => {
+								done();
+							})
+							.catch(_ => {});
+					}
+				}
+			})
+		}
+	</script> -->
+</head>
 
-	<body class="home blog custom-background round-avatars">
-		<a href="https://github.com/zhaokunz/zhaokunz.github.io/tree/master/Look" id="looks">点击打开我的作业</a>
+<body class="home blog custom-background round-avatars">
+	<div id="box">
+		<el-button id="looks" @click="add" type="primary" style="margin-left: 16px;">
+			点击打开我的作业
+		</el-button>
+		<el-drawer id="title" title="我是标题" :visible.sync="drawer" :direction="direction">
+			<lee></lee>
+		</el-drawer>
 		<div class="Yarn_Background" style="background-image: url( statics/images/47fb3c_.jpg);"></div>
 		<form class="js-search search-form search-form--modal" method="get" action="search.html" role="search">
 			<div class="search-form__inner">
 				<div>
 					<div id="search-container" class="ajax_search">
 						<form method="get" id="searchform" action="">
-							<div class="filter_container"><input type="text" value="" autocomplete="off" placeholder="Type then select or enter" name="s" id="search-input" />
+							<div class="filter_container"><input type="text" value="" autocomplete="off"
+									placeholder="Type then select or enter" name="s" id="search-input" />
 								<ul id="search_filtered" class="search_filtered"></ul>
 							</div>
 							<input type="submit" name="submit" id="searchsubmit" class="searchsubmit" value="" />
@@ -50,33 +104,42 @@
 						<div id="main-menu" class="main-menu-container">
 							<div class="menu-menu-container">
 								<ul id="primary-menu" class="menu">
-									<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">
+									<li id="menu-item-17"
+										class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17">
 										<a href="index.html">首页</a>
 									</li>
-									<li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">
+									<li id="menu-item-173"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">
 										<a href="update.html">更新</a>
 									</li>
-									<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
+									<li id="menu-item-78"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78">
 										<a href="link.html">链接</a>
 									</li>
-									<li id="menu-item-252" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">
+									<li id="menu-item-252"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-252">
 										<a href="archives.html">归档</a>
 										<ul class="sub-menu">
-											<li id="menu-item-165" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">
+											<li id="menu-item-165"
+												class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165">
 												<a href="">theme</a>
 											</li>
-											<li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">
+											<li id="menu-item-163"
+												class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163">
 												<a href="">Happen</a>
 											</li>
-											<li id="menu-item-924" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">
+											<li id="menu-item-924"
+												class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-924">
 												<a href="">WeWork</a>
 											</li>
-											<li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">
+											<li id="menu-item-164"
+												class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164">
 												<a href="">WordPress</a>
 											</li>
 										</ul>
 									</li>
-									<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
+									<li id="menu-item-57"
+										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57">
 										<a href="gustbook.html">留言</a>
 									</li>
 								</ul>
@@ -97,7 +160,9 @@
 						<img class="custom-logo avatar" src="statics/images/omikron.png" />
 					</figure>
 				</a>
-				<h3 class="blog-description"><p>This is beauty</p></h3>
+				<h3 class="blog-description">
+					<p>This is beauty</p>
+				</h3>
 			</div>
 			<!-- .site-branding -->
 			<div class="decor-part">
@@ -105,7 +170,8 @@
 			</div>
 			<div class="animation-header">
 				<div class="decor-wrapper">
-					<svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+					<svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1"
+						viewBox="0 0 100 100" preserveAspectRatio="none">
 						<path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
 						<path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
 						<path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
@@ -124,10 +190,13 @@
 					<div class="posts-list js-posts">
 						<div class="post post-layout-list" data-aos="fade-up">
 							<div class="status_list_item icon_kyubo">
-								<div class="status_user" style="background-image: url(statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+								<div class="status_user"
+									style="background-image: url(statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
 									<div class="status_section">
 										<a href="detail.html" class="status_btn">交代是不可能交代的</a>
-										<p class="section_p">相隔上一次的更新我掰手指数一数，下意识的双腿一软，给各位小哥哥小姐姐们跪下了。自从有了对象后，周末几乎落下了主题的进度（邪魅的笑）。一边开发新的主题，一边收集您们给我反馈回来的"臭虫"，还有新的主题后台看见了一些大神在... </p>
+										<p class="section_p">
+											相隔上一次的更新我掰手指数一数，下意识的双腿一软，给各位小哥哥小姐姐们跪下了。自从有了对象后，周末几乎落下了主题的进度（邪魅的笑）。一边开发新的主题，一边收集您们给我反馈回来的"臭虫"，还有新的主题后台看见了一些大神在...
+										</p>
 									</div>
 								</div>
 							</div>
@@ -138,7 +207,9 @@
 									<div class="row review-item-wrapper">
 										<div class="col-sm-3">
 											<a rel="nofollow" href="detail.html">
-												<div class="review-item-img" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+												<div class="review-item-img"
+													style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);">
+												</div>
 											</a>
 										</div>
 										<div class="col-sm-9 flex-xs-middle">
@@ -150,24 +221,31 @@
 										</div>
 									</div>
 									<div class="review-bg-wrapper">
-										<div class="bg-blur" style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);"></div>
+										<div class="bg-blur"
+											style="background-image: url(statics/images/diego-ph-249471-2-800x1000.jpg);">
+										</div>
 									</div>
 								</div>
 								<div class="post-container">
-									<div class="entry-content">确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
+									<div class="entry-content">
+										确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。
+										年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</div>
 									<div class="post-footer">
 										<a class="gaz-btn primary" href="">READ MORE</a>
-										<span class="total-comments-on-post pull-right"><a href="">31 Comments</a></span>
+										<span class="total-comments-on-post pull-right"><a href="">31
+												Comments</a></span>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="post post-layout-list" data-aos="fade-up">
 							<div class="status_list_item icon_kyubo">
-								<div class="status_user" style="background-image: url(statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+								<div class="status_user"
+									style="background-image: url(statics/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
 									<div class="status_section">
 										<a href="detail.html" class="status_btn">状态</a>
-										<p class="section_p">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras 的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ... </p>
+										<p class="section_p">因为我这后半年飘忽不定的更新节奏，感觉真的对不住用户。最近才松下来能处理反馈的bug，顺便加快新主题 Dcras
+											的制作，农历年后或许能上线，准确时间，不敢说-- 为了感谢大家对 Yarn 的支持，Dcras 会以 获兑现码半价的承诺 给 Yarn ... </p>
 									</div>
 								</div>
 							</div>
@@ -181,7 +259,8 @@
 											<a href="detail.html">重构图像样式测试</a>
 										</div>
 										<h5 class="review-item-creator"><b>发布日期：</b>2019-09-4</h5>
-										<div class="album-content">如眼所见是一个图像样式，必须写五十左右的文字作为这个文本框的空白填充，不写也是可以的，强迫症不能容忍空白。</div>
+										<div class="album-content">如眼所见是一个图像样式，必须写五十左右的文字作为这个文本框的空白填充，不写也是可以的，强迫症不能容忍空白。
+										</div>
 									</div>
 									<div class="album-thumb-width flex-xs-middle">
 										<div class="row album-thumb no-gutter">
@@ -204,7 +283,9 @@
 									<div class="row review-item-wrapper">
 										<div class="col-sm-3">
 											<a rel="nofollow" href="detail.html">
-												<div class="review-item-img" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+												<div class="review-item-img"
+													style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);">
+												</div>
 											</a>
 										</div>
 										<div class="col-sm-9 flex-xs-middle">
@@ -216,14 +297,18 @@
 										</div>
 									</div>
 									<div class="review-bg-wrapper">
-										<div class="bg-blur" style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+										<div class="bg-blur"
+											style="background-image: url(statics/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);">
+										</div>
 									</div>
 								</div>
 								<div class="post-container">
-									<div class="entry-content">现在的明星的影响力足以影响国内娱乐圈的"半壁江山"，发条微博，新浪都恐慌好几天，来来来，蹭个热点给大家介绍一下我的女朋友。</div>
+									<div class="entry-content">
+										现在的明星的影响力足以影响国内娱乐圈的"半壁江山"，发条微博，新浪都恐慌好几天，来来来，蹭个热点给大家介绍一下我的女朋友。</div>
 									<div class="post-footer">
 										<a class="gaz-btn primary" href="detail.html">READ MORE</a>
-										<span class="total-comments-on-post pull-right"><a href="">30 Comments</a></span>
+										<span class="total-comments-on-post pull-right"><a href="">30
+												Comments</a></span>
 									</div>
 								</div>
 							</div>
@@ -242,7 +327,8 @@
 
 		<footer id="footer" class="overlay animated from-top">
 			<div class="decor-wrapper">
-				<svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1"
+					viewBox="0 0 100 100" preserveAspectRatio="none">
 					<path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
 					<path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
 					<path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
@@ -262,19 +348,22 @@
 					<div class="wechatimg"><img src="statics/images/49D3746D-7519-B709-83E4-65BD1927C4E7.jpg"></div>
 				</li>
 				<li>
-					<a title="QQ" class="socialicon" href="" target="_blank"><i class="iconfont" aria-hidden="true">&#xe616;</i></a>
+					<a title="QQ" class="socialicon" href="" target="_blank"><i class="iconfont"
+							aria-hidden="true">&#xe616;</i></a>
 				</li>
 			</div>
 			<div class="cr">
 				Copyright&copy;2019. Design by
 				<a href="">17sucai</a>
 			</div>
-			<script type='text/javascript' src='statics/js/jquery.min.js'></script>
-			<script type='text/javascript' src='statics/js/plugins.js'></script>
-			<script type='text/javascript' src='statics/js/script.js'></script>
-			<script type='text/javascript' src='statics/js/particles.js'></script>
-			<script type='text/javascript' src='statics/js/aos.js'></script>
-
-	</body>
+		</footer>
+	</div>
+	<script type='text/javascript' src='statics/js/jquery.min.js'></script>
+	<script type='text/javascript' src='statics/js/plugins.js'></script>
+	<script type='text/javascript' src='statics/js/script.js'></script>
+	<script type='text/javascript' src='statics/js/particles.js'></script>
+	<script type='text/javascript' src='statics/js/aos.js'></script>
+	<script src="datas.js"></script>
+</body>
 
 </html>
