@@ -27,6 +27,10 @@ Vue.component('lee',{
                         name:'9-4三级导航',
                         url:'Look/9-4/三级导航.html',
                     },
+                    {
+                        name:'9-5webpack配置',
+                        url:'Look/9-5/app/dist/index.html',
+                    },
                 ]
             ]
         }

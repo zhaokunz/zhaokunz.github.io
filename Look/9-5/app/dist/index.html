@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; list-style:none; -webkit-user-select:none;}
+    
+    </style>
+</head>
+
+<body>
+    迷人的混蛋
+    <img src="./1.jpg" alt="">
+    <div id="box">
+        <app></app>
+    </div>
+    <!-- 
+        cnpm i webpack webpack-cli webpack-dev-server  -g
+        webpack 4
+
+        打包方式
+        1.js直接打包
+          开发模式 development 时间快 大一些
+          生产模式 production 时间长 小一些
+          //webpack --mode=上面的模式类型  打包
+        2.webpack.dev.js文件
+            module.exports={
+                entry:{//入口文件
+                    main:'./src/main.js'
+                },
+                mode:'development',//开发模式
+                output:{//出口文件
+                    filename:'[name].js',  //找main.js
+                    path:path.resolve(__dirname,'./dist'),
+                }
+            }
+            //webpack --config=webpack.dev.js打包 ---去package.json看有没有快捷
+     -->
+
+    <script src="./main.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
