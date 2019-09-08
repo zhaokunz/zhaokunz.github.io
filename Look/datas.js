@@ -31,6 +31,10 @@ Vue.component('lee',{
                         name:'9-5webpack配置',
                         url:'Look/9-5/app/dist/index.html',
                     },
+                    {
+                        name:'9-8协会网站',
+                        url:'Look/9-8/app/dist/index.html',
+                    },
                 ]
             ]
         }
