@@ -7,8 +7,11 @@ Vue.component('lee',{
                         <a :href="item.url">{{item.name}}</a>
                     </td>
                 </tr>
-
-
+                <tr style="height:40px;text-align:center;">
+                    <td v-for="(item, index) in arr[1]">
+                        <a :href="item.url">{{item.name}}</a>
+                    </td>
+                </tr>
 
 
                 <tr></tr>
@@ -39,6 +42,12 @@ Vue.component('lee',{
                         name:'9-10生态网站',
                         url:'Look/9-10/app/dist/index.html',
                     },
+                ],
+                [
+                    {
+                        name:'9-14书旗',
+                        url:'Look/9-14/app/dist/index.html',
+                    }
                 ]
             ]
         }
