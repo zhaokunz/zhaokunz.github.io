@@ -35,10 +35,6 @@ Vue.component('lee',{
                     {
                         name:'9-10生态网站',
                         url:'Look/9-10/app/dist/index.html',
-                    },
-                    {
-                        name:'9-15书旗', 
-                        url:'Look/9-15/app/dist/index.html',
                     }
                 ]
             ]
