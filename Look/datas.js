@@ -37,8 +37,8 @@ Vue.component('lee',{
                         url:'Look/9-10/app/dist/index.html',
                     },
                     {
-                        name:'9-16书旗', 
-                        url:'Look/9-16/app/dist/index.html',
+                        name:'9-15书旗', 
+                        url:'Look/9-15/app/dist/index.html',
                     }
                 ]
             ]
