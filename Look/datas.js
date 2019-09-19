@@ -39,6 +39,10 @@ Vue.component('lee',{
                     {
                         name:'9-18皮皮虾',
                         url:'Look/9-18/app/dist/index.html',
+                    },
+                    {
+                        name:'9-20vuex',
+                        url:'Look/9-20/app/dist/index.html',
                     }
                 ]
             ]
