@@ -41,13 +41,13 @@ Vue.component('lee',{
                         url:'Look/9-18/app/dist/index.html',
                     },
                     {
-                        name:'9-20vuex',
-                        url:'Look/9-20/app/dist/index.html',
-                    },
-                    {
                         name:'9-24茶叶',
                         url:'Look/9-24/app/dist/index.html',
-                    }
+                    },
+                    {
+                        name:'9-26机考',
+                        url:'Look/9-26/app/dist/index.html',
+                    },
                 ]
             ]
         }
