@@ -46,7 +46,7 @@ Vue.component('lee',{
                     },
                     {
                         name:'9-26机考',
-                        url:'Look/9-26/app/dist/index.html',
+                        url:'Look/9-26/app/index.html',
                     },
                 ]
             ]
